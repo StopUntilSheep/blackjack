@@ -1,0 +1,100 @@
+<html>
+
+<head>
+    <title>Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cards.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+    <div id="game">
+
+        <div id="board">
+
+            <div id="cards-dealer"></div>
+
+            <div id="cards-player"></div>
+
+        </div>
+
+        <div id="player-bank" class="gui-base vertical">
+
+            <div class="title">Bank</div>
+
+            <div class="value currency">
+                <input type="number" min="0.00" step="0.01" readonly />
+            </div>
+
+        </div>
+
+        <div id="dealer-score" class="gui-base vertical ">
+
+            <div class="title">Dealer</div>
+
+            <div class="value">
+                <input type="number" min="0" step="1" readonly />
+            </div>
+
+        </div>
+
+        <div id="player-score" class="gui-base vertical ">
+
+            <div class="title">Player</div>
+
+            <div class="value">
+                <input type="number" min="0" step="1" readonly />
+            </div>
+
+        </div>
+
+        <div id="game-menu" class="gui-base vertical ">
+
+            <div class="title">Game Menu</div>
+
+            <a class="button game-menu-button green" id="new-game">New Game</a>
+            <a class="button game-menu-button blue" id="hit-me">Hit Me!</a>
+            <a class="button game-menu-button red" id="stick">Stick</a>
+
+        </div>
+
+        <div id="bet-scaler" class="gui-base">
+
+            <div id="bet-scaler--inner-bg">
+
+                <div id="bet-scaler--handle">
+                    <i class="fa-solid fa-caret-up"></i>
+                    <i class="fa-solid fa-caret-down"></i>
+                </div>
+
+                <div id="bet-scaler--inner-fill"></div>
+
+            </div>
+
+        </div>
+
+        <div id="bet-amount" class="gui-base vertical">
+
+            <div class="title">Bet Amount</div>
+
+            <div class="value currency">
+                <input value="0.00" type="number" min="0.00" step="0.01" />
+            </div>
+
+            <div class="confirm">
+                <a id="place-bet" class="button blue" href="#">Place Bet</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+<script type="text/javascript" src="scripts.js"></script>
+<script type="text/javascript" src="cards.js"></script>
+
+</html>

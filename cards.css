@@ -1,0 +1,226 @@
+.card {
+  position: relative;
+  display: inline-block;
+  margin-left: calc(-2 * var(--aspect-unit));
+  margin-right: calc(-2 * var(--aspect-unit));
+  /*   width: 172px;
+  height: 240px; */
+
+
+  /* Each pixel translates to 0.0465116279069vw (8/172) */
+
+
+
+
+  width: calc(10 * var(--aspect-unit));
+  height: calc(13 * var(--aspect-unit));
+  font: calc(1.1 * var(--aspect-unit)) 'Trebuchet MS';
+  border-radius: calc(.2 * var(--aspect-unit));
+  background: #FFF;
+  box-shadow: 0 calc(.12 * var(--aspect-unit)) calc(.22 * var(--aspect-unit)) rgba(0, 0, 0, 0.18);
+
+  animation: throw-spin .4s ease-out;
+  animation-fill-mode: forwards;
+
+}
+
+.card:hover {
+  cursor: pointer;
+  box-shadow: calc(.7 * var(--aspect-unit)) calc(.7 * var(--aspect-unit)) calc(1.6 * var(--aspect-unit)) rgba(0, 0, 0, 0.3);
+  transition: none;
+  z-index: 9999;
+  animation-fill-mode: none;
+}
+
+.card:before,
+.card:after {
+  content: attr(value);
+  position: absolute;
+  width: calc(0.75 * var(--aspect-unit));
+  text-align: center;
+  letter-spacing: -calc(.12 * var(--aspect-unit));
+}
+
+.card:before {
+  top: calc(0.24 * var(--aspect-unit));
+  left: calc(0.24 * var(--aspect-unit));
+}
+
+.card:after {
+  bottom: calc(0.24 * var(--aspect-unit));
+  right: calc(0.24 * var(--aspect-unit));
+  transform: rotate(180deg);
+}
+
+.card--heart,
+.card--diamond {
+  color: #e44145;
+  fill: #e44145;
+}
+
+.card--heart:before,
+.card--heart:after {
+  content: attr(value) ' ♥';
+}
+
+.card--diamond:before,
+.card--diamond:after {
+  content: attr(value) ' ♦';
+}
+
+.card--spade,
+.card--club {
+  color: #252525;
+  fill: #252525;
+}
+
+.card--spade:before,
+.card--spade:after {
+  content: attr(value) ' ♠';
+}
+
+.card--club:before,
+.card--club:after {
+  content: attr(value) ' ♣';
+}
+
+.card__inner {
+  box-sizing: border-box;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  top: calc(1.4 * var(--aspect-unit));
+  left: calc(1.4 * var(--aspect-unit));
+  right: calc(1.4 * var(--aspect-unit));
+  bottom: calc(1.4 * var(--aspect-unit));
+}
+
+.card__back {
+  box-sizing: border-box;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  top: calc(.5 * var(--aspect-unit));
+  left: calc(.5 * var(--aspect-unit));
+  right: calc(.5 * var(--aspect-unit));
+  bottom: calc(.5 * var(--aspect-unit));
+  background-color: #e5e5f7;
+  opacity: 0.8;
+  border: 0.06vw solid #444cf7cc;
+  background-image: linear-gradient(135deg, #444cf7 25%, transparent 25%), linear-gradient(225deg, #444cf7 25%, transparent 25%), linear-gradient(45deg, #444cf7 25%, transparent 25%), linear-gradient(315deg, #444cf7 25%, #e5e5f7 25%);
+  background-position: calc(.8 * var(--aspect-unit)) 0, calc(.8 * var(--aspect-unit)) 0, 0 0, 0 0;
+  background-size: calc(.8 * var(--aspect-unit)) calc(.8 * var(--aspect-unit));
+  background-repeat: repeat;
+}
+
+.card__inner--centered {
+  justify-content: center;
+}
+
+.card__column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.card__column--centered {
+  justify-content: center;
+}
+
+.card__symbol {
+  display: inline-block;
+  height: calc(2.2 * var(--aspect-unit));
+  text-align: center;
+}
+
+.card__symbol:before {
+  font-size: calc(2.2 * var(--aspect-unit));
+  line-height: calc(2.2 * var(--aspect-unit));
+}
+
+.card__symbol.ace {
+  height: calc(8 * var(--aspect-unit));
+}
+
+.card__symbol.ace:before {
+  font-size: calc(8 * var(--aspect-unit));
+  line-height: calc(8 * var(--aspect-unit));
+}
+
+.card__symbol-face {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card--heart .card__symbol:before {
+  content: '♥';
+}
+
+.card--spade .card__symbol:before {
+  content: '♠';
+}
+
+.card--diamond .card__symbol:before {
+  content: '♦';
+}
+
+.card--club .card__symbol:before {
+  content: '♣';
+}
+
+.card__symbol--rotated,
+.card__symbol:last-of-type {
+  transform: rotate(180deg);
+}
+
+.card__symbol:first-of-type {
+  transform: rotate(0);
+}
+
+.card__symbol--big {
+  flex-basis: calc(3.2 * var(--aspect-unit));
+}
+
+.card__symbol--huge {
+  flex-basis: calc(7 * var(--aspect-unit));
+}
+
+
+
+
+
+
+
+
+/*=============================================
+=               CARD ANIMATIONS               =
+=============================================*/
+
+:root {
+  --random-1: 0;
+  --random-2: 0;
+  --random-3: 0;
+}
+
+@keyframes throw-spin {
+  from {
+    opacity: 0;
+    margin-bottom: calc(10 * var(--aspect-unit));
+    margin-top: -calc(10 * var(--aspect-unit));
+    transform: rotate(-50deg);
+  }
+
+  to {
+    opacity: 1;
+    margin-bottom: calc(var(--random-1) * calc(1 * var(--aspect-unit)));
+    /* var(--random-1) should be between 0 and 3 */
+    margin-top: calc(var(--random-1) * calc(-1 * var(--aspect-unit)));
+    /* var(--random-1) should be between 0 and 3 */
+    transform: rotate(calc(var(--random-2) * 1deg));
+    /* var(--random-2) should be between -12 and 12 */
+
+  }
+}
